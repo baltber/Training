@@ -1,0 +1,54 @@
+#lang racket
+
+(define (exp a n)
+  (exp-iter 1 a n))
+
+(define (exp-iter prod b count)
+  (if (= count 0)
+      prod
+      (if (even? count)
+          (exp-iter prod (square b) (/ count 2))
+          (exp-iter (* prod b) b (- count 1)))))
+
+
+(define (sqrt x)
+  (define (good? g)
+    (< (abs (- (square g) x)) 0.0001))
+  (define (improve g)
+    (average g (/ x g)))
+  (define (sqrt-iter g)
+    (if (good? g)
+        g
+        (sqrt-iter (improve g))))
+  (sqrt-iter 1.0))
+
+(define (sqrt3 x)
+  (define (good? g)
+    (< (abs (- (cube g) x)) 0.0001))
+  (define (improve g)
+    (/(+ (/ x (square g))
+         (* 2 g))
+       3))
+  (define (sqrt-iter g)
+    (if (good? g)
+        g
+        (sqrt-iter (improve g))))
+  (sqrt-iter 1.0))
+
+
+(define (square a) (* a a))
+
+(define (cube a) (* a a a))
+
+(define (average a b)
+  (/(+ a b) 2))
+
+(define (cons2 a b)
+  (lambda (m) (m (*(exp 2 a)(exp 3 b)))))
+
+(define (car2 z)
+  (z (lambda (p q) ( sqrt p))))
+
+(define (cdr2 z)
+  (z (lambda (p q) (sqrt3 q))))
+

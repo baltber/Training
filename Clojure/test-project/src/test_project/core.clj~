@@ -1,0 +1,7 @@
+(ns test-project.core)
+
+(defn square1[x]
+  (* x x))
+
+(defn add[a b]
+  (clojure.)

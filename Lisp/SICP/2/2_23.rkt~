@@ -1,0 +1,9 @@
+#lang racket
+(define (for-each1 fun items)
+  (if (null? items)
+      null
+      ((fun (car items)) (for-each1 fun (cdr items)))))
+
+(define test (for-each1
+              (lambda (x) (newline) (display x))
+              (list 1 2 3 4 5)))

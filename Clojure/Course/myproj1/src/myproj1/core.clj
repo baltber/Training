@@ -1,0 +1,88 @@
+(ns myproj1.core
+  (:gen-class))
+
+(defn -main [& args]
+  (println "Hello, World!"))
+
+(str \u03BB)
+
+(class "str")
+
+(class #"[Rr]egexp?")
+
+(* 8 (/ 1 56))
+
+:keyword
+
+(str #inst "2010-01-01")
+
+(if (< 1 2)
+  5
+  6)
+
+(case "v3"
+  "v1" true
+  "v2" false
+  42)
+
+(cond
+  (> 1 10) (+ 1 2)
+  (> 1 20) (+ 3 5)
+  :default true)
+
+(do
+  (+ 5 6)
+  (println "1234")
+  (+ 1 2 3)
+  )
+
+(let [x 10]
+  (+ x 2))
+
+(loop [x 10
+       acc 0]
+  (if (pos? x)
+    (do (println x acc)
+    (recur (- x 1) (+ acc x)))
+    acc))
+
+(defn fibn [N]
+  (cond (= N 0) 0
+        (= N 1) 1
+  :default (+ (fibn (- N 1)) (fibn (- N 2)))))
+
+
+(defn fibn2 [N]
+  (loop [i 0
+       fib-i-1 0
+       fib-i 1]
+  (if (= i N) fib-i)
+  (recur (inc i) fib-i (+ fib-i-1 fib-i))))
+
+
+(defn f ^{ :pre [(pos? x)]
+           :post [(< % 20)]}
+  [x]
+  (* 2 x)
+  )
+
+#(inc %)
+
+(apply + 5 [1 2 3])
+
+(fn [x] (str (vec (reverse x))))
+
+(defn compose [x]
+  (comp str str reverse) x)
+
+(compose (list 1 2 3))
+
+
+(map (juxt dec identity inc) (list 1 2 3 4 5))
+
+(ns clojurecourse.basic)
+
+(defn f [x] x)
+
+
+

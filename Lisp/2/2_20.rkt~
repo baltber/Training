@@ -1,0 +1,8 @@
+#lang racket
+(define (same-parity x . z)
+  ((if (= (remainder (car z) x) 0)
+       (cons (car z) (same-parity x . (cdr z)))
+       (same-parity x . (cdr z)))))
+
+(define (rem? a b)
+  (= (remainder a b) 0))

@@ -1,0 +1,11 @@
+
+(setq c 0)
+(setq c (+ c 1))
+(+ c 1)
+(current-buffer)
+(point)
+(+ 2 'sasas)
+(message "dsds: %s" (buffer-name))
+
+(set 'цветы '(розв вы выы))
+цветы

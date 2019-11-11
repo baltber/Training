@@ -1,0 +1,11 @@
+#!/bin/bash
+
+a=354
+hello=$a
+
+echo $hello
+
+hello="A B C      D"
+echo $hello
+echo "$hello"
+echo '$hello'

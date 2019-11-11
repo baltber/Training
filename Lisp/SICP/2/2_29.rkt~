@@ -1,0 +1,18 @@
+#lang racket
+(define (make-mobil left right)
+  (list left right))
+
+(define (make-brunch length structure)
+  (list length structure))
+
+(define (left-brunch tree)
+  (car tree))
+
+(define (right-brunch tree)
+  (cdr tree))
+
+(define (branch-length branch)
+  (car branch))
+
+(define (branch-structure branch)
+  (cdr branch))

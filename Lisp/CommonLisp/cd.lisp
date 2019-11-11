@@ -5,6 +5,7 @@
 
 (defun add-record (cd) (push cd *db*))
 
+
 (defun dump-db ()
   (format t "~{~{~a:~10t~a~%~}~%~}" *db*))
 
@@ -24,3 +25,16 @@
 (defun add-cds()
   (loop (add-record (prompt-for-cd))
      (if (not (y-or-n-p "Another? [y/n]: ")) (return))))
+
+
+(defun save-db (filename)
+  (with-open-file (out filename
+		       :direction :output
+		       :if-exists :supersede)
+    (with-standard-io-syntax
+      (print *db* out))))
+
+(defun open-db (filename)
+  (with-open-file (in filename)
+    (with-standard-io-syntax
+      (setf *db* (read in)))))
